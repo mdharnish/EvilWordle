@@ -452,7 +452,7 @@ def get_feedback(remaining_secret_words, guessed_word):
     for color_pattern in word_families:
         word_families_list.append(WordFamily(color_pattern, word_families[color_pattern]))
     sorted_word_families_list = fast_sort(word_families_list)
-    hardest_word_family = sorted_word_families_list[len(sorted_word_families_list) - 1]
+    hardest_word_family = sorted_word_families_list[0]
     feedback_colors = hardest_word_family.feedback_colors
     new_remaining_secret_words = hardest_word_family.words
     return feedback_colors, new_remaining_secret_words
