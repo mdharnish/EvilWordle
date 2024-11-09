@@ -209,7 +209,7 @@ class WordFamily:
             return True
         elif len(self.words) == len(other.words) and self.difficulty < other.difficulty:
             return True
-        elif self.difficulty == other.difficulty and self.pattern < other.pattern:
+        elif self.difficulty == other.difficulty and self.feedback_colors < other.feedback_colors:
             return True
         return False
 
@@ -524,4 +524,3 @@ def main():
 # DO NOT change these lines
 if __name__ == "__main__":
     main()
-
