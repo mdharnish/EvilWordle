@@ -94,8 +94,8 @@ class Keyboard:
                 self.colors[letter] = CORRECT_COLOR
             elif feedback == WRONG_SPOT_COLOR and self.colors[letter] != CORRECT_COLOR:
                 self.colors[letter] = WRONG_SPOT_COLOR
-            elif (feedback == NOT_IN_WORD_COLOR 
-                  and self.colors[letter] != CORRECT_COLOR 
+            elif (feedback == NOT_IN_WORD_COLOR
+                  and self.colors[letter] != CORRECT_COLOR
                   and self.colors[letter] != WRONG_SPOT_COLOR):
                 self.colors[letter] = NOT_IN_WORD_COLOR
 
