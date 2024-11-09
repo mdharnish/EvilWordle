@@ -140,8 +140,6 @@ class Keyboard:
         return formatted_keyboard
 
 
-
-
 class WordFamily:
     """
     A class representing a group or 'family' of words that match a specific pattern
@@ -180,7 +178,6 @@ class WordFamily:
         # TODO: implement the difficulty calculation here.
         for color in feedback_colors:
             self.difficulty += WordFamily.COLOR_DIFFICULTY[color]
-        self.difficulty *= len(words)
 
     # TODO: Modify this method. You may delete this comment when you are done.
     def __lt__(self, other):
@@ -205,13 +202,13 @@ class WordFamily:
         """
         if not isinstance(other, WordFamily):
             raise NotImplementedError("< operator only valid for WordFamily comparisons.")
-        if len(self.words) < len(other.words):
-            return True
-        elif len(self.words) == len(other.words) and self.difficulty < other.difficulty:
-            return True
-        elif self.difficulty == other.difficulty and self.feedback_colors < other.feedback_colors:
-            return True
-        return False
+        if len(self.words) != len(other.words):
+            return len(self.words) < len(other.words)
+        elif self.difficulty != other.difficulty:
+            return self.difficulty < other.difficulty
+        else:
+            return self.feedback_colors < other.feedback_colors
+
 
     # DO NOT change this method.
     # You should use this for debugging!
@@ -360,7 +357,7 @@ def fast_sort(lst):
 
         i, j, k = 0, 0, 0
         while i < len(left_half) and j < len(right_half):
-            if left_half[i] <= right_half[j]:
+            if left_half[i] < right_half[j]:
                 lst[k] = left_half[i]
                 i += 1
             else:
