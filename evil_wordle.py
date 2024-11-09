@@ -125,18 +125,18 @@ class Keyboard:
               and arranged to match a typical keyboard layout.
         """
         first_row = "qwertyuiop"
-        second_row = "asdfjkl"
+        second_row = "asdfghjkl"
         third_row = "zxcvbnm"
         formatted_keyboard = ""
         for letter in first_row:
             formatted_keyboard += color_word(self.colors[letter], letter) + " "
-            formatted_keyboard = formatted_keyboard.strip() + "\n"
+        formatted_keyboard = formatted_keyboard.strip() + "\n "
         for letter in second_row:
             formatted_keyboard += color_word(self.colors[letter], letter) + " "
-            formatted_keyboard = formatted_keyboard.strip() + "\n"
+        formatted_keyboard = formatted_keyboard.strip() + "\n   "
         for letter in third_row:
             formatted_keyboard += color_word(self.colors[letter], letter) + " "
-            formatted_keyboard = formatted_keyboard.strip() + "\n"
+        formatted_keyboard = formatted_keyboard.strip()
         return formatted_keyboard
 
 
@@ -178,9 +178,9 @@ class WordFamily:
         self.words = words
         self.difficulty = 0
         # TODO: implement the difficulty calculation here.
-        self.pattern = feedback_colors
         for color in feedback_colors:
             self.difficulty += WordFamily.COLOR_DIFFICULTY[color]
+        self.difficulty *= len(words)
 
     # TODO: Modify this method. You may delete this comment when you are done.
     def __lt__(self, other):
@@ -400,9 +400,6 @@ def get_feedback_colors(secret_word, guessed_word):
     feedback = [None] * NUM_LETTERS
 
     # Modify this! This is just starter code.
-    for i in range(NUM_LETTERS):
-        feedback[i] = WRONG_SPOT_COLOR
-
     unguessed_letter_counts = {}
     for letter in secret_word:
         if letter in unguessed_letter_counts:
@@ -527,3 +524,4 @@ def main():
 # DO NOT change these lines
 if __name__ == "__main__":
     main()
+
